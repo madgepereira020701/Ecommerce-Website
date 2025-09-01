@@ -154,8 +154,8 @@ const Auth = ({ setIsAuthenticated, setUserName }) => {
           localStorage.setItem('userName', response.data.userName);
           localStorage.setItem('role', login.role);
         } else if (login.role === 'User') {
-          setUserName(response.data.fullname);
-          localStorage.setItem('userName', response.data.fullname);
+          setUserName(response.data.userName);
+          localStorage.setItem('userName', response.data.userName);
           localStorage.setItem('role', login.role);
         } 
 
