@@ -104,6 +104,7 @@ const userlogin = async (req, res) => {
       message: "Logged in successfully",
       data: {
         token, // Send token back in the response
+        userName: user.username, // ✅ add this
       },
     });
   } catch (err) {
