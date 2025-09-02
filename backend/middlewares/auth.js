@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const JWT_SECRET = "mysweetkitty"; // ⚠️ move to .env in production
+const JWT_SECRET = ""; // ⚠️ move to .env in production
 
 const protect = (req, res, next) => {
   let token;
