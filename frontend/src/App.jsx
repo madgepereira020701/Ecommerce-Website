@@ -17,6 +17,12 @@ import ProtectedRoute from "./ProtectedRoute.jsx"; // ✅
 import Products from "./pages/Products/Products";
 import Categories from "./pages/Categories/Categories.jsx";
 import ProductDetails from "./pages/ProductDetails/ProductDetails.jsx";
+import UserProducts from "./pages/UserSection/UserProducts";
+import UserCategories from "./pages/UserSection/UserCategories.jsx";
+import Cart from "./pages/UserSection/Cart.jsx";
+import UserOrders from "./pages/UserSection/UserOrders.jsx";
+import Orders from "./pages/Orders.jsx";
+import UserHome from "./pages/UserSection/UserHome.jsx";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -93,6 +99,41 @@ function App() {
             path="/products"
             element={<ProtectedRoute element={<Products />} />}
           />
+
+                              <Route
+            path="/userproducts"
+            element={<ProtectedRoute element={<UserProducts />} requiredRole="User"/>}
+          />
+
+                                        <Route
+            path="/usercategories"
+            element={<ProtectedRoute element={<UserCategories />} requiredRole="User"/>}
+          />
+
+
+<Route
+            path="/cart"
+            element={<ProtectedRoute element={<Cart />} requiredRole="User"/>}
+          />
+
+  <Route
+            path="/userorders"
+            element={<ProtectedRoute element={<UserOrders/>} requiredRole="User"/>}
+          />
+        
+  <Route
+            path="/orders"
+            element={<ProtectedRoute element={<Orders/>} requiredRole="Admin"/>}
+          />
+
+            <Route
+            path="/userhome"
+            element={<ProtectedRoute element={<UserHome/>} requiredRole="User"/>}
+          />
+
+
+
+
 
           <Route
             path="*"

@@ -1,11 +1,12 @@
 import React from 'react'
 import Layout from '../../components/Layout/Layout'
-const AdminDashboard = () => {
+
+const UserOrders = () => {
   return (
     <Layout>
-        <h1>Admin Dashboard</h1>
+        <h1>Orders</h1>
     </Layout>
   )
 }
 
-export default AdminDashboard
+export default UserOrders

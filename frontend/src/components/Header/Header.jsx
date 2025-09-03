@@ -93,12 +93,12 @@ const Header = () => {
             ) : role === "User" ? (
               <>
                 <li className="nav-item">
-                  <NavLink to="/home" className="nav-link">
+                  <NavLink to="/userhome" className="nav-link">
                     Home
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/category" className="nav-link">
+                  <NavLink to="/usercategories" className="nav-link">
                     Category
                   </NavLink>
                 </li>
@@ -108,7 +108,7 @@ const Header = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/orders" className="nav-link">
+                  <NavLink to="/userorders" className="nav-link">
                     Orders
                   </NavLink>
                 </li>
@@ -118,7 +118,7 @@ const Header = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/products" className="nav-link">
+                  <NavLink to="/userproducts" className="nav-link">
                     Products
                   </NavLink>
                 </li>
