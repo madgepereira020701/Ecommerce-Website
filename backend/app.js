@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 const path = require("path");
 const multer = require("multer");
 const authcontroller = require("./controllers/auth");
+const userprotect = require("./middlewares/user");
 const productcontroller = require("./controllers/products");
 const categorycontroller = require("./controllers/categories");
 
@@ -59,6 +60,7 @@ app.post("/userlogin", authcontroller.userlogin);
 app.post("/products", protect, productcontroller.addProduct);
 app.get("/products", protect, productcontroller.getProducts);
 app.get("/products/:name", protect, productcontroller.getProductDetails);
+app.get("/userproducts", productcontroller.getAllProducts);
 app.delete("/products/:name", protect, productcontroller.deleteProduct);
 app.patch("/products/:_id", protect, productcontroller.updateProduct);
 
@@ -67,6 +69,7 @@ app.post("/categories", protect, categorycontroller.addCategory);
 app.get("/categories", protect, categorycontroller.getCategories);
 app.delete("/categories/:category", protect, categorycontroller.deleteCategory);
 app.patch("/categories/:_id", protect, categorycontroller.updateCategory);
+app.get("/usercategories", categorycontroller.getAllCategories);
 
 // ✅ Start Server
 app.listen(port, () =>
