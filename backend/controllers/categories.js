@@ -57,6 +57,18 @@ const getCategories = async (req, res) => {
   }
 };
 
+const getAllCategories = async (req, res) => {
+  try {
+    const categories = await Category.find(); // no filter
+    if (!categories || categories.length === 0) {
+      return res.status(404).json({ message: "No products available" });
+    }
+    return res.status(200).json(categories);
+  } catch (error) {
+    return res.status(500).json({ message: "Server Error", error });
+  }
+};
+
 // ✅ Delete Product
 const deleteCategory = async (req, res) => {
   try {
@@ -112,4 +124,5 @@ module.exports = {
   getCategories,
   deleteCategory,
   updateCategory,
+  getAllCategories,
 };
