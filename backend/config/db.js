@@ -4,9 +4,7 @@ mongoose.connection.on("error", (error) => {
   console.log("MongoDB connection error:", err);
 });
 
-const mongoURI =
-  "mongodb+srv://ecommerce:ecremmoce@e-commerce-website.semwa7k.mongodb.net/?retryWrites=true&w=majority&appName=E-Commerce-Website";
-
+const mongoURI = " ";
 const connectDB = async () => {
   try {
     await mongoose.connect(mongoURI, {

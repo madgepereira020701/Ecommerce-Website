@@ -4,7 +4,7 @@ const User = require("../models/user.js");
 const bcrypt = require("bcryptjs");
 
 // Define your JWT_SECRET directly
-const JWT_SECRET = "mysweetkitty"; // Hardcoded secret key
+const JWT_SECRET = ""; // Hardcoded secret key
 
 // Register admin
 const adminregister = async (req, res) => {

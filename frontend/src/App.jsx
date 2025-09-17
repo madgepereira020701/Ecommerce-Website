@@ -100,6 +100,41 @@ function App() {
             element={<ProtectedRoute element={<Products />} />}
           />
 
+                              <Route
+            path="/userproducts"
+            element={<ProtectedRoute element={<UserProducts />} requiredRole="User"/>}
+          />
+
+                                        <Route
+            path="/usercategories"
+            element={<ProtectedRoute element={<UserCategories />} requiredRole="User"/>}
+          />
+
+
+<Route
+            path="/cart"
+            element={<ProtectedRoute element={<Cart />} requiredRole="User"/>}
+          />
+
+  <Route
+            path="/userorders"
+            element={<ProtectedRoute element={<UserOrders/>} requiredRole="User"/>}
+          />
+        
+  <Route
+            path="/orders"
+            element={<ProtectedRoute element={<Orders/>} requiredRole="Admin"/>}
+          />
+
+            <Route
+            path="/userhome"
+            element={<ProtectedRoute element={<UserHome/>} requiredRole="User"/>}
+          />
+
+
+
+
+
           <Route
             path="/userproducts"
             element={<ProtectedRoute element={<UserProducts />} requiredRole="User"/>}
