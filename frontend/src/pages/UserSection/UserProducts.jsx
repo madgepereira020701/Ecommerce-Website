@@ -49,7 +49,7 @@ const UserProducts = () => {
                     <p className="mb-1"><strong>₹{product.price}</strong></p>
                     <p className="mb-1">Category: {product.category}</p>
                     <p className="mb-2">Stock: {product.stock}</p>
-                    <button>Add to Cart</button>
+                    <button type="submit" className="btn btn-success">Add to Cart</button>
                   </div>
                 </div>
               </div>
