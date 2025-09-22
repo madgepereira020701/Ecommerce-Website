@@ -112,7 +112,7 @@ function App() {
 
 
 <Route
-            path="/cart"
+            path="/cart/:user"
             element={<ProtectedRoute element={<Cart />} requiredRole="User"/>}
           />
 
