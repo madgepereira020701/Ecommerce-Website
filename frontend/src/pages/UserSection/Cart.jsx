@@ -57,6 +57,7 @@ useEffect(() => {
                     <h5 className="card-title">{item.name}</h5>
                     <p>Price: ₹{item.price}</p>
                     <p>Quantity: {item.quantity}</p>
+                    <button className="btn btn-primary">Buy Now</button>
                   </div>
                 </div>
               </div>
