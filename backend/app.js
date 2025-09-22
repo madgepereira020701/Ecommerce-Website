@@ -8,6 +8,7 @@ const authcontroller = require("./controllers/auth");
 const userprotect = require("./middlewares/user");
 const productcontroller = require("./controllers/products");
 const categorycontroller = require("./controllers/categories");
+const cartcontroller = require("./controllers/cart");
 
 const protect = require("./middlewares/auth");
 
@@ -70,6 +71,10 @@ app.get("/categories", protect, categorycontroller.getCategories);
 app.delete("/categories/:category", protect, categorycontroller.deleteCategory);
 app.patch("/categories/:_id", protect, categorycontroller.updateCategory);
 app.get("/usercategories", categorycontroller.getAllCategories);
+
+// ✅ Cart Routes
+app.post("/cart/add", userprotect, cartcontroller.additemtocart);
+app.get("/cart", userprotect, cartcontroller.getusercart);
 
 // ✅ Start Server
 app.listen(port, () =>
