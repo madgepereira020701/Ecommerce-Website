@@ -60,7 +60,7 @@ app.post("/userlogin", authcontroller.userlogin);
 // ✅ Product Routes
 app.post("/products", protect, productcontroller.addProduct);
 app.get("/products", protect, productcontroller.getProducts);
-app.get("/products/:name", protect, productcontroller.getProductDetails);
+app.get("/products/:name", productcontroller.getProductDetails);
 app.get("/userproducts", productcontroller.getAllProducts);
 app.delete("/products/:name", protect, productcontroller.deleteProduct);
 app.patch("/products/:_id", protect, productcontroller.updateProduct);
