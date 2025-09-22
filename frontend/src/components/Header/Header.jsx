@@ -63,11 +63,6 @@ const Header = () => {
                     Home
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink to="/profile" className="nav-link">
-                    Profile
-                  </NavLink>
-                </li>
                                 <li className="nav-item">
                   <NavLink to="/categories" className="nav-link">
                     Categories
@@ -89,6 +84,12 @@ const Header = () => {
                     Users
                   </NavLink>
                 </li>
+                                <li className="nav-item">
+                  <NavLink to="/profile" className="nav-link">
+                    Profile
+                  </NavLink>
+                </li>
+
               </>
             ) : role === "User" ? (
               <>
