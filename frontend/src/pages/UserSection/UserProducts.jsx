@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 
-const UserProducts = () => {
+const UserProducts = ({ userId }) => {
   const [products, setProducts] = useState([]);
+  const [message, setMessage] = useState(""); // ✅ message state
 
   useEffect(() => {
     const fetchPublicProducts = async () => {
@@ -11,14 +12,9 @@ const UserProducts = () => {
         if (!res.ok) throw new Error("Failed to fetch products");
         const data = await res.json();
 
-        // ✅ Handle both array and {data: []} API responses
-        if (Array.isArray(data)) {
-          setProducts(data);
-        } else if (Array.isArray(data.data)) {
-          setProducts(data.data);
-        } else {
-          console.error("Unexpected API response:", data);
-        }
+        if (Array.isArray(data)) setProducts(data);
+        else if (Array.isArray(data.data)) setProducts(data.data);
+        else console.error("Unexpected API response:", data);
       } catch (err) {
         console.error("Error fetching products:", err);
       }
@@ -26,10 +22,45 @@ const UserProducts = () => {
     fetchPublicProducts();
   }, []);
 
+  const addToCart = async (product) => {
+    try {
+      const res = await fetch("http://localhost:3000/cart/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify({
+          userId,
+          productId: product._id,
+          quantity: 1
+        }),
+        credentials: "include",
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.message || "Failed to add to cart");
+
+      // ✅ Show success message
+      setMessage(`✅ "${product.name}" added to cart successfully!`);
+
+      // Optionally, redirect after a short delay
+      // setTimeout(() => navigate(`/cart/${userId}`), 1000);
+
+    } catch (err) {
+      console.error("Error adding to cart:", err);
+      setMessage(`❌ Failed to add "${product.name}" to cart: ${err.message}`);
+    }
+  };
+
   return (
     <Layout title="Available Products">
       <div className="container">
         <h1 className="my-3">Available Products</h1>
+
+        {/* ✅ Display message */}
+        {message && <div className="alert alert-info">{message}</div>}
 
         <div className="row">
           {products.length > 0 ? (
@@ -49,7 +80,13 @@ const UserProducts = () => {
                     <p className="mb-1"><strong>₹{product.price}</strong></p>
                     <p className="mb-1">Category: {product.category}</p>
                     <p className="mb-2">Stock: {product.stock}</p>
-                    <button type="submit" className="btn btn-success">Add to Cart</button>
+
+                    <button
+                      onClick={() => addToCart(product)}
+                      className="btn btn-success"
+                    >
+                      Add to Cart
+                    </button>
                   </div>
                 </div>
               </div>
