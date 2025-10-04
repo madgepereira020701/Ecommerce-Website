@@ -3,6 +3,8 @@ import "./App.css";
 import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Profile from './pages/Profile/Profile'
+import AdminProfile from "./pages/Profile/Profile";
+import UserProfile from "./pages/UserSection/Profile.jsx";
 import Home from "./pages/Home/Home";
 import AboutUs from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
@@ -15,13 +17,14 @@ import ConfirmEmail from "./components/Authentication/ConfirmEmail/ConfirmEmail"
 
 import ProtectedRoute from "./ProtectedRoute.jsx"; // ✅
 import Products from "./pages/Products/Products";
-import Categories from "./pages/Categories/Categories.jsx";
+import Categories from "./pages/Admin Section/Categories/Categories.jsx";
 import ProductDetails from "./pages/ProductDetails/ProductDetails.jsx";
 import UserProducts from "./pages/UserSection/UserProducts";
 import UserCategories from "./pages/UserSection/UserCategories.jsx";
 import Cart from "./pages/UserSection/Cart.jsx";
 import UserOrders from "./pages/UserSection/UserOrders.jsx";
 import Orders from "./pages/Orders.jsx";
+import Payment from "./pages/UserSection/Payment.jsx"
 import UserHome from "./pages/UserSection/UserHome.jsx";
 
 function App() {
@@ -80,6 +83,23 @@ function App() {
             path="/contact"
             element={<ProtectedRoute element={<Contact />} />}
           />
+
+                    <Route
+            path="/adminprofile"
+            element={<ProtectedRoute element={<AdminProfile />} />}
+          />
+          <Route
+            path="/userprofile"
+            element={<ProtectedRoute element={<UserProfile />} />}
+          />
+
+                    <Route
+            path="/payment"
+            element={<ProtectedRoute element={<Payment />} />}
+          />
+
+
+
           <Route
             path="/policy"
             element={<ProtectedRoute element={<Policy />} />}

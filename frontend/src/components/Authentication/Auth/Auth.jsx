@@ -153,10 +153,13 @@ const Auth = ({ setIsAuthenticated, setUserName }) => {
           setUserName(response.data.userName);
           localStorage.setItem('userName', response.data.userName);
           localStorage.setItem('role', login.role);
+
         } else if (login.role === 'User') {
           setUserName(response.data.userName);
           localStorage.setItem('userName', response.data.userName);
           localStorage.setItem('role', login.role);
+          localStorage.setItem("userId", response.data.userId); // ✅ store userId
+
         } 
 
         localStorage.setItem('token', response.data.token);
