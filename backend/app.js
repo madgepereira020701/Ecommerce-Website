@@ -5,10 +5,12 @@ const connectDB = require("./config/db");
 const path = require("path");
 const multer = require("multer");
 const authcontroller = require("./controllers/auth");
+const profilecontroller = require("./controllers/profile");
 const userprotect = require("./middlewares/user");
 const productcontroller = require("./controllers/products");
 const categorycontroller = require("./controllers/categories");
 const cartcontroller = require("./controllers/cart");
+const addresscontroller = require("./controllers/address");
 
 const protect = require("./middlewares/auth");
 
@@ -75,6 +77,13 @@ app.get("/usercategories", categorycontroller.getAllCategories);
 // ✅ Cart Routes
 app.post("/cart/add", userprotect, cartcontroller.additemtocart);
 app.get("/cart", userprotect, cartcontroller.getusercart);
+
+// ✅ Profile Routes
+app.get("/admin/profile", protect, profilecontroller.getAdminProfile);
+app.get("/user/profile", userprotect, profilecontroller.getUserProfile);
+
+app.get("/:id/address", userprotect, addresscontroller.getAddress);
+app.put("/:id/address", userprotect, addresscontroller.updateAddress);
 
 // ✅ Start Server
 app.listen(port, () =>
