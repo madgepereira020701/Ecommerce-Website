@@ -4,7 +4,8 @@ mongoose.connection.on("error", (error) => {
   console.log("MongoDB connection error:", err);
 });
 
-const mongoURI = " ";
+const mongoURI = "";
+
 const connectDB = async () => {
   try {
     await mongoose.connect(mongoURI, {

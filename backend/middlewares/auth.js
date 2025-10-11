@@ -16,7 +16,7 @@ const protect = (req, res, next) => {
       const decoded = jwt.verify(token, JWT_SECRET);
 
       // Attach only the user/admin ID
-      req.user = decoded.userId; // ✅ this should be the MongoDB ObjectId
+      req.admin = { id: decoded.adminId, username: decoded.userName }; // ✅ use req.admin for admin routes
 
       next();
     } catch (error) {

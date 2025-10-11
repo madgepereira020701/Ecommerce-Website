@@ -7,7 +7,7 @@ const Category = require("../models/categories");
 const addCategory = async (req, res) => {
   try {
     const { category } = req.body;
-    const createdBy = req.user;
+    const createdBy = req.admin.id;
 
     if (!createdBy) {
       return res
@@ -41,7 +41,7 @@ const addCategory = async (req, res) => {
 // ✅ Get Products (by admin)
 const getCategories = async (req, res) => {
   try {
-    const createdBy = req.user;
+    const createdBy = req.admin.id;
     const categories = await Category.find({ createdBy });
 
     if (!categories || categories.length === 0) {
@@ -93,7 +93,7 @@ const updateCategory = async (req, res) => {
   try {
     const categoryId = req.params._id;
     const { category } = req.body;
-    const createdBy = req.user;
+    const createdBy = req.admin;
 
     if (!createdBy) {
       return res.status(401).json({ message: "Admin not found" });

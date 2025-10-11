@@ -23,7 +23,7 @@ const upload = multer({ storage }).single("image");
 const addProduct = async (req, res) => {
   try {
     const { name, description, price, category, stock, image } = req.body;
-    const createdBy = req.user;
+    const createdBy = req.admin.id;
 
     if (!createdBy) {
       return res
@@ -93,7 +93,7 @@ const addProduct = async (req, res) => {
 // ✅ Get Products (by admin)
 const getProducts = async (req, res) => {
   try {
-    const createdBy = req.user;
+    const createdBy = req.admin.id;
     const products = await Product.find({ createdBy });
 
     if (!products || products.length === 0) {
@@ -175,7 +175,7 @@ const updateProduct = async (req, res) => {
   try {
     const productId = req.params._id;
     const { name, description, price, category, stock, image } = req.body;
-    const createdBy = req.user;
+    const createdBy = req.admin;
 
     if (!createdBy) {
       return res.status(401).json({ message: "Admin not found" });

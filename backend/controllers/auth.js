@@ -143,9 +143,9 @@ const adminlogin = async (req, res) => {
     console.log("Entered password:", password);
 
     const token = jwt.sign(
-      { userId: admin._id, userName: admin.username },
+      { adminId: admin._id, userName: admin.username, role: "admin" },
       JWT_SECRET,
-      { expiresIn: "1hr" }
+      { expiresIn: "1h" }
     );
     return res
       .status(200)
